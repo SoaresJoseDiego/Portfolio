@@ -8,7 +8,7 @@
     left: 0;
     right: 0;
     z-index: 100;
-    background-color: rgba(10, 10, 15, 0.8);
+    background-color: rgba(10, 10, 15, 0.95);
     backdrop-filter: blur(10px);
     border-bottom: 1px solid var(--border);
 
@@ -16,7 +16,9 @@
       max-width: $container-max-width;
       margin: 0 auto;
       padding: map.get($spacing, '4') $container-padding;
-      @include flex-between;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
     }
 
     &__logo {
@@ -39,6 +41,7 @@
 
     &__nav {
       display: none;
+      align-items: center;
       gap: map.get($spacing, '8');
 
       @include breakpoint('md') {
@@ -57,9 +60,14 @@
       }
     }
 
+    // Botão hamburguer
     &__menu-btn {
       display: flex;
-      padding: map.get($spacing, '2');
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
 
       @include breakpoint('md') {
         display: none;
@@ -71,7 +79,7 @@
       width: 24px;
       height: 2px;
       background-color: var(--text-primary);
-      @include transition(background-color);
+      transition: background-color 0.3s ease;
 
       &::before,
       &::after {
@@ -81,7 +89,7 @@
         width: 100%;
         height: 2px;
         background-color: var(--text-primary);
-        @include transition(transform);
+        transition: transform 0.3s ease;
       }
 
       &::before {
@@ -105,9 +113,10 @@
       }
     }
 
+    // Menu mobile
     &__mobile-nav {
       display: none;
-      @include flex-column;
+      flex-direction: column;
       padding: map.get($spacing, '4') $container-padding;
       gap: map.get($spacing, '4');
       background-color: var(--bg-secondary);

@@ -41,7 +41,8 @@
               [(ngModel)]="formData.name"
               name="name"
               required
-              placeholder="Seu nome">
+              placeholder="Seu nome"
+              [disabled]="isLoading">
           </div>
 
           <div class="contact__form-group">
@@ -53,7 +54,8 @@
               [(ngModel)]="formData.email"
               name="email"
               required
-              placeholder="seu@email.com">
+              placeholder="seu@email.com"
+              [disabled]="isLoading">
           </div>
 
           <div class="contact__form-group">
@@ -65,11 +67,24 @@
               name="message"
               required
               rows="5"
-              placeholder="Sua mensagem..."></textarea>
+              placeholder="Sua mensagem..."
+              [disabled]="isLoading"></textarea>
           </div>
 
-          <button type="submit" class="contact__btn">
-            Enviar Mensagem
+          <!-- Status Message -->
+          @if (statusMessage) {
+            <div class="contact__status" [class.success]="statusType === 'success'" [class.error]="statusType === 'error'">
+              {{ statusMessage }}
+            </div>
+          }
+
+          <button type="submit" class="contact__btn" [disabled]="isLoading">
+            @if (isLoading) {
+              <span class="contact__btn-loader"></span>
+              Enviando...
+            } @else {
+              Enviar Mensagem
+            }
           </button>
         </form>
       </div>
