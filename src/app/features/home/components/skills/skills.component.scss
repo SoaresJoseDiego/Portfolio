@@ -1,0 +1,88 @@
+@use "sass:map";
+@use "../../../../../scss/variables" as *;
+@use "../../../../../scss/mixins" as *;
+
+.skills {
+  padding: map.get($spacing, "20") $container-padding;
+
+  &__container {
+    max-width: $container-max-width;
+    margin: 0 auto;
+  }
+
+  &__title {
+    text-align: center;
+    margin-bottom: map.get($spacing, "12");
+
+    &::after {
+      content: "";
+      display: block;
+      width: 60px;
+      height: 3px;
+      background-color: var(--accent);
+      margin: map.get($spacing, "4") auto 0;
+      border-radius: 2px;
+    }
+  }
+
+  &__grid {
+    display: grid;
+    gap: map.get($spacing, "8");
+
+    @include breakpoint("md") {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include breakpoint("lg") {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  &__category {
+    background-color: var(--bg-secondary);
+    padding: map.get($spacing, "6");
+    border-radius: $border-radius-lg;
+    border: 1px solid var(--border);
+  }
+
+  &__category-title {
+    color: var(--accent);
+    margin-bottom: map.get($spacing, "6");
+    font-size: map.get($font-sizes, "lg");
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: map.get($spacing, "4");
+  }
+
+  &__item-header {
+    @include flex-between;
+    margin-bottom: map.get($spacing, "2");
+  }
+
+  &__item-name {
+    font-size: map.get($font-sizes, "sm");
+    color: var(--text-primary);
+  }
+
+  &__item-percent {
+    font-size: map.get($font-sizes, "xs");
+    color: var(--text-muted);
+  }
+
+  &__bar {
+    height: 6px;
+    background-color: var(--bg-tertiary);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+
+  &__bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent), var(--accent-light));
+    border-radius: 3px;
+    transition: width 1s ease-out;
+  }
+}

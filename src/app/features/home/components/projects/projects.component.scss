@@ -1,0 +1,115 @@
+@use 'sass:map';
+  @use '../../../../../scss/variables' as *;
+  @use '../../../../../scss/mixins' as *;
+
+  .projects {
+    padding: map.get($spacing, '20') $container-padding;
+    background-color: var(--bg-secondary);
+
+    &__container {
+      max-width: $container-max-width;
+      margin: 0 auto;
+    }
+
+    &__title {
+      text-align: center;
+      margin-bottom: map.get($spacing, '12');
+
+      &::after {
+        content: '';
+        display: block;
+        width: 60px;
+        height: 3px;
+        background-color: var(--accent);
+        margin: map.get($spacing, '4') auto 0;
+        border-radius: 2px;
+      }
+    }
+
+    &__grid {
+      display: grid;
+      gap: map.get($spacing, '6');
+
+      @include breakpoint('md') {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      @include breakpoint('lg') {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    &__card {
+      background-color: var(--bg-primary);
+      border-radius: $border-radius-lg;
+      border: 1px solid var(--border);
+      padding: map.get($spacing, '6');
+      display: flex;
+      flex-direction: column;
+      @include transition(all);
+
+      &:hover {
+        border-color: var(--accent);
+        transform: translateY(-4px);
+      }
+    }
+
+    &__card-content {
+      flex: 1;
+    }
+
+    &__card-title {
+      font-size: map.get($font-sizes, 'xl');
+      margin-bottom: map.get($spacing, '3');
+      color: var(--text-primary);
+    }
+
+    &__card-description {
+      font-size: map.get($font-sizes, 'sm');
+      margin-bottom: map.get($spacing, '4');
+      line-height: 1.6;
+    }
+
+    &__tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: map.get($spacing, '2');
+      margin-bottom: map.get($spacing, '6');
+    }
+
+    &__tag {
+      font-size: map.get($font-sizes, 'xs');
+      padding: map.get($spacing, '1') map.get($spacing, '3');
+      background-color: var(--bg-tertiary);
+      color: var(--accent);
+      border-radius: $border-radius-full;
+    }
+
+    &__card-links {
+      display: flex;
+      gap: map.get($spacing, '3');
+      padding-top: map.get($spacing, '4');
+      border-top: 1px solid var(--border);
+    }
+
+    &__link {
+      display: flex;
+      align-items: center;
+      gap: map.get($spacing, '2');
+      font-size: map.get($font-sizes, 'sm');
+      color: var(--text-secondary);
+      @include transition(color);
+
+      &:hover {
+        color: var(--accent);
+      }
+
+      &--primary {
+        color: var(--accent);
+
+        &:hover {
+          color: var(--accent-light);
+        }
+      }
+    }
+  }

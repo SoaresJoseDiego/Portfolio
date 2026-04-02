@@ -1,0 +1,124 @@
+ @use 'sass:map';
+  @use '../../../../../scss/variables' as *;
+  @use '../../../../../scss/mixins' as *;
+
+  .contact {
+    padding: map.get($spacing, '20') $container-padding;
+
+    &__container {
+      max-width: $container-max-width;
+      margin: 0 auto;
+    }
+
+    &__title {
+      text-align: center;
+      margin-bottom: map.get($spacing, '4');
+
+      &::after {
+        content: '';
+        display: block;
+        width: 60px;
+        height: 3px;
+        background-color: var(--accent);
+        margin: map.get($spacing, '4') auto 0;
+        border-radius: 2px;
+      }
+    }
+
+    &__subtitle {
+      text-align: center;
+      margin-bottom: map.get($spacing, '12');
+    }
+
+    &__content {
+      display: grid;
+      gap: map.get($spacing, '12');
+
+      @include breakpoint('lg') {
+        grid-template-columns: 1fr 2fr;
+      }
+    }
+
+    &__info {
+      display: flex;
+      flex-direction: column;
+      gap: map.get($spacing, '6');
+    }
+
+    &__info-item {
+      display: flex;
+      align-items: center;
+      gap: map.get($spacing, '4');
+      color: var(--accent);
+
+      div {
+        display: flex;
+        flex-direction: column;
+      }
+    }
+
+    &__info-label {
+      font-size: map.get($font-sizes, 'sm');
+      color: var(--text-muted);
+    }
+
+    &__info-value {
+      color: var(--text-primary);
+    }
+
+    &__form {
+      display: flex;
+      flex-direction: column;
+      gap: map.get($spacing, '5');
+    }
+
+    &__form-group {
+      display: flex;
+      flex-direction: column;
+      gap: map.get($spacing, '2');
+    }
+
+    &__label {
+      font-size: map.get($font-sizes, 'sm');
+      color: var(--text-secondary);
+    }
+
+    &__input {
+      background-color: var(--bg-secondary);
+      border: 1px solid var(--border);
+      border-radius: $border-radius;
+      padding: map.get($spacing, '3') map.get($spacing, '4');
+      font-size: map.get($font-sizes, 'base');
+      @include transition(border-color);
+
+      &::placeholder {
+        color: var(--text-muted);
+      }
+
+      &:focus {
+        outline: none;
+        border-color: var(--accent);
+      }
+    }
+
+    &__textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    &__btn {
+      background-color: var(--accent);
+      color: white;
+      padding: map.get($spacing, '4') map.get($spacing, '8');
+      border-radius: $border-radius;
+      font-size: map.get($font-sizes, 'base');
+      font-weight: map.get($font-weights, 'medium');
+      @include transition(all);
+      align-self: flex-start;
+
+      &:hover {
+        background-color: var(--accent-hover);
+        transform: translateY(-2px);
+      }
+    }
+  }
