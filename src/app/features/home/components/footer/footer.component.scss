@@ -1,0 +1,59 @@
+ @use 'sass:map';
+  @use '../../../../../scss/variables' as *;
+  @use '../../../../../scss/mixins' as *;
+
+
+.footer {
+  padding: map.get($spacing, "12") $container-padding;
+  background-color: var(--bg-secondary);
+  border-top: 1px solid var(--border);
+
+  &__container {
+    max-width: $container-max-width;
+    margin: 0 auto;
+    @include flex-column;
+    align-items: center;
+    gap: map.get($spacing, "6");
+    text-align: center;
+  }
+
+  &__logo {
+    font-size: map.get($font-sizes, "xl");
+    font-weight: map.get($font-weights, "bold");
+    color: var(--text-primary);
+  }
+
+  &__logo-accent {
+    color: var(--accent);
+  }
+
+  &__tagline {
+    font-size: map.get($font-sizes, "sm");
+    margin-top: map.get($spacing, "1");
+  }
+
+  &__social {
+    display: flex;
+    gap: map.get($spacing, "4");
+  }
+
+  &__social-link {
+    @include flex-center;
+    width: 40px;
+    height: 40px;
+    border-radius: $border-radius;
+    background-color: var(--bg-tertiary);
+    color: var(--text-secondary);
+    @include transition(all);
+
+    &:hover {
+      color: var(--accent);
+      transform: translateY(-2px);
+    }
+  }
+
+  &__copyright {
+    font-size: map.get($font-sizes, "sm");
+    color: var(--text-muted);
+  }
+}
