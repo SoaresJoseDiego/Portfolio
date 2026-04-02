@@ -53,6 +53,7 @@
     color: var(--text-secondary);
     font-size: map.get($font-sizes, 'sm');
     font-weight: map.get($font-weights, 'medium');
+    cursor: pointer;
     @include transition(color);
 
     &:hover {
@@ -155,6 +156,7 @@
     color: var(--text-secondary);
     font-size: map.get($font-sizes, 'base');
     padding: map.get($spacing, '2') 0;
+    cursor: pointer;
     @include transition(color);
 
     &:hover {

@@ -8,12 +8,19 @@ import { Component } from '@angular/core';
   styleUrl: './hero.component.scss',
 })
 export class HeroComponent {
-    name = 'Diego Soares';
-    role = 'Desenvolvedor Full Stack';
-    description = 'Transformando ideias em soluções digitais com Angular e .NET';
+  name = 'Diego Soares';
+  role = 'Desenvolvedor Full Stack';
+  description = 'Transformando ideias em soluções digitais com Angular e .NET';
 
-    socialLinks = [
-      { name: 'GitHub', url: 'https://github.com/SoaresJoseDiego', icon: 'github' },
-      { name: 'LinkedIn', url: 'https://www.linkedin.com/in/diegoj-soares', icon: 'linkedin' }
-    ];
+  socialLinks = [
+    { name: 'GitHub', url: 'https://github.com/SoaresJoseDiego', icon: 'github' },
+    { name: 'LinkedIn', url: 'https://www.linkedin.com/in/diegoj-soares', icon: 'linkedin' }
+  ];
+
+  scrollTo(sectionId: string): void {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
 }

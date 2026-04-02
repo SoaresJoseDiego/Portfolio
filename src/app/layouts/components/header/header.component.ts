@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -7,44 +7,48 @@ import { Component } from '@angular/core';
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit {
   navItems = [
-    { label: 'Início', href: '#home' },
-    { label: 'Sobre', href: '#about' },
-    { label: 'Skills', href: '#skills' },
-    { label: 'Projetos', href: '#projects' },
-    { label: 'Contato', href: '#contact' },
+    { label: 'Início', href: 'hero' },
+    { label: 'Sobre', href: 'about' },
+    { label: 'Skills', href: 'skills' },
+    { label: 'Projetos', href: 'projects' },
+    { label: 'Contato', href: 'contact' },
   ];
 
   isMenuOpen = false;
+  isDarkMode = true;
 
-
-
-   isDarkMode = true;
-
-    ngOnInit(): void {
-      const saved = localStorage.getItem('theme');
-      if (saved) {
-        this.isDarkMode = saved === 'dark';
-      } else {
-        this.isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      }
-      this.applyTheme();
+  ngOnInit(): void {
+    const saved = localStorage.getItem('theme');
+    if (saved) {
+      this.isDarkMode = saved === 'dark';
+    } else {
+      this.isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
     }
+    this.applyTheme();
+  }
 
-    toggleMenu(): void {
-      this.isMenuOpen = !this.isMenuOpen;
+  toggleMenu(): void {
+    this.isMenuOpen = !this.isMenuOpen;
+  }
+
+  toggleTheme(): void {
+    this.isDarkMode = !this.isDarkMode;
+    this.applyTheme();
+    localStorage.setItem('theme', this.isDarkMode ? 'dark' : 'light');
+  }
+
+  scrollTo(sectionId: string): void {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
+    // Fecha o menu mobile após clicar
+    this.isMenuOpen = false;
+  }
 
-    toggleTheme(): void {
-      this.isDarkMode = !this.isDarkMode;
-      this.applyTheme();
-      localStorage.setItem('theme', this.isDarkMode ? 'dark' : 'light');
-    }
-
-    private applyTheme(): void {
-      document.documentElement.setAttribute('data-theme', this.isDarkMode ? 'dark' : 'light');
-    }
-
-  
+  private applyTheme(): void {
+    document.documentElement.setAttribute('data-theme', this.isDarkMode ? 'dark' : 'light');
+  }
 }
