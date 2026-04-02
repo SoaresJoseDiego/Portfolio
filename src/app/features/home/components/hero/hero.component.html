@@ -1,12 +1,25 @@
 <section class="hero" id="hero">
+  <!-- Blobs animados no background -->
+  <div class="hero__blob hero__blob--1"></div>
+  <div class="hero__blob hero__blob--2"></div>
+  <div class="hero__blob hero__blob--3"></div>
+
   <div class="hero__container">
     <div class="hero__content">
-      <span class="hero__greeting">Olá, eu sou</span>
-      <h1 class="hero__name">{{ name }}</h1>
-      <h2 class="hero__role">{{ role }}</h2>
-      <p class="hero__description">{{ description }}</p>
+      <span class="hero__greeting animate-on-scroll">Olá, eu sou</span>
 
-      <div class="hero__actions">
+      <!-- Nome com gradiente animado -->
+      <h1 class="hero__name hero__name--gradient animate-on-scroll">{{ name }}</h1>
+
+      <!-- Role com efeito typewriter -->
+      <h2 class="hero__role animate-on-scroll">
+        <span class="hero__role-text">{{ currentRole }}</span>
+        <span class="hero__cursor">|</span>
+      </h2>
+
+      <p class="hero__description animate-on-scroll">{{ description }}</p>
+
+      <div class="hero__actions animate-on-scroll">
         <button class="hero__btn hero__btn--primary" (click)="scrollTo('projects')">
           Ver Projetos
         </button>
@@ -15,7 +28,7 @@
         </button>
       </div>
 
-      <div class="hero__social">
+      <div class="hero__social animate-on-scroll">
         @for (link of socialLinks; track link.name) {
           <a
             [href]="link.url"

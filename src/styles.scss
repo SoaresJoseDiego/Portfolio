@@ -1,4 +1,76 @@
-
 @use 'scss/variables';
 @use 'scss/reset';
 @use 'scss/typography';
+
+// ============================================
+// ANIMAÇÕES GLOBAIS - Scroll Animations
+// ============================================
+
+// Elementos que animam ao entrar na tela
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+
+  &.animate-in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  // Delays para efeito cascata
+  @for $i from 1 through 10 {
+    &:nth-child(#{$i}) {
+      transition-delay: #{$i * 0.1}s;
+    }
+  }
+}
+
+// Variações de animação
+.animate-fade-up {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+
+  &.animate-in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-left {
+  opacity: 0;
+  transform: translateX(-40px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+
+  &.animate-in {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-fade-right {
+  opacity: 0;
+  transform: translateX(40px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+
+  &.animate-in {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-scale {
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+
+  &.animate-in {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+// Transição suave para mudança de tema
+* {
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
