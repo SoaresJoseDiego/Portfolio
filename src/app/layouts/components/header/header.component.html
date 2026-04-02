@@ -1,0 +1,26 @@
+<header class="header">
+  <div class="header__container">
+    <a href="#home" class="header__logo">
+        <span class="header__logo-text">Diego</span>
+        <span class="header__logo-accent">.dev</span>
+    </a>
+
+    <nav class="header__nav">
+        @for (item of navItems; track item.label) {
+            <a [href]="item.href" class="header__nav-link">
+                {{item.label}}
+            </a>
+        }
+    </nav>
+
+    <button class="header__menu-btn" (click)="toggleMenu()" [attr.aria-expanded]="isMenuOpen" aria-label="Menu de navegação">
+        <span class="header__menu-icon" [class.active]="isMenuOpen"></span>
+    </button>
+  </div>
+
+  <nav class="header__mobile-nav" [class.active]="isMenuOpen">
+    @for (item of navItems; track item.label) {
+        <a [href]="item.href" class="header__mobile-link" (click)="toggleMenu()">{{item.label}}</a>
+    }
+  </nav>
+</header>

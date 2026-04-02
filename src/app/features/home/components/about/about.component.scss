@@ -1,0 +1,86 @@
+@use 'sass:map';
+  @use '../../../../../scss/variables' as *;
+  @use '../../../../../scss/mixins' as *;
+
+  .about {
+    padding: map.get($spacing, '20') $container-padding;
+    background-color: var(--bg-secondary);
+
+    &__container {
+      max-width: $container-max-width;
+      margin: 0 auto;
+    }
+
+    &__title {
+      text-align: center;
+      margin-bottom: map.get($spacing, '12');
+
+      &::after {
+        content: '';
+        display: block;
+        width: 60px;
+        height: 3px;
+        background-color: var(--accent);
+        margin: map.get($spacing, '4') auto 0;
+        border-radius: 2px;
+      }
+    }
+
+    &__content {
+      display: grid;
+      gap: map.get($spacing, '12');
+
+      @include breakpoint('lg') {
+        grid-template-columns: 2fr 1fr;
+        align-items: start;
+      }
+    }
+
+    &__text {
+      p {
+        margin-bottom: map.get($spacing, '4');
+        line-height: 1.8;
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+    }
+
+    &__stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: map.get($spacing, '4');
+
+      @include breakpoint('lg') {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    &__stat {
+      background-color: var(--bg-tertiary);
+      padding: map.get($spacing, '6');
+      border-radius: $border-radius-lg;
+      text-align: center;
+      border: 1px solid var(--border);
+      @include transition(all);
+
+      &:hover {
+        border-color: var(--accent);
+        transform: translateY(-2px);
+      }
+    }
+
+    &__stat-value {
+      display: block;
+      font-size: map.get($font-sizes, '3xl');
+      font-weight: map.get($font-weights, 'bold');
+      color: var(--accent);
+      margin-bottom: map.get($spacing, '1');
+    }
+
+    &__stat-label {
+      font-size: map.get($font-sizes, 'sm');
+      color: var(--text-secondary);
+    }
+  }

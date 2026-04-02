@@ -1,0 +1,135 @@
+ @use 'sass:map';
+  @use '../../../../scss/variables' as *;
+  @use '../../../../scss/mixins' as *;
+
+  .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    background-color: rgba(10, 10, 15, 0.8);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+
+    &__container {
+      max-width: $container-max-width;
+      margin: 0 auto;
+      padding: map.get($spacing, '4') $container-padding;
+      @include flex-between;
+    }
+
+    &__logo {
+      font-size: map.get($font-sizes, 'xl');
+      font-weight: map.get($font-weights, 'bold');
+      @include transition(opacity);
+
+      &:hover {
+        opacity: 0.8;
+      }
+    }
+
+    &__logo-text {
+      color: var(--text-primary);
+    }
+
+    &__logo-accent {
+      color: var(--accent);
+    }
+
+    &__nav {
+      display: none;
+      gap: map.get($spacing, '8');
+
+      @include breakpoint('md') {
+        display: flex;
+      }
+    }
+
+    &__nav-link {
+      color: var(--text-secondary);
+      font-size: map.get($font-sizes, 'sm');
+      font-weight: map.get($font-weights, 'medium');
+      @include transition(color);
+
+      &:hover {
+        color: var(--text-primary);
+      }
+    }
+
+    &__menu-btn {
+      display: flex;
+      padding: map.get($spacing, '2');
+
+      @include breakpoint('md') {
+        display: none;
+      }
+    }
+
+    &__menu-icon {
+      position: relative;
+      width: 24px;
+      height: 2px;
+      background-color: var(--text-primary);
+      @include transition(background-color);
+
+      &::before,
+      &::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background-color: var(--text-primary);
+        @include transition(transform);
+      }
+
+      &::before {
+        top: -8px;
+      }
+
+      &::after {
+        top: 8px;
+      }
+
+      &.active {
+        background-color: transparent;
+
+        &::before {
+          transform: translateY(8px) rotate(45deg);
+        }
+
+        &::after {
+          transform: translateY(-8px) rotate(-45deg);
+        }
+      }
+    }
+
+    &__mobile-nav {
+      display: none;
+      @include flex-column;
+      padding: map.get($spacing, '4') $container-padding;
+      gap: map.get($spacing, '4');
+      background-color: var(--bg-secondary);
+      border-bottom: 1px solid var(--border);
+
+      &.active {
+        display: flex;
+      }
+
+      @include breakpoint('md') {
+        display: none !important;
+      }
+    }
+
+    &__mobile-link {
+      color: var(--text-secondary);
+      font-size: map.get($font-sizes, 'base');
+      padding: map.get($spacing, '2') 0;
+      @include transition(color);
+
+      &:hover {
+        color: var(--accent);
+      }
+    }
+  }

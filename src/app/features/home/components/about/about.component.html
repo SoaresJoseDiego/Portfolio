@@ -1,0 +1,33 @@
+<section class="about" id="about">
+    <div class="about__container">
+      <h2 class="about__title">Sobre mim</h2>
+
+      <div class="about__content">
+        <div class="about__text">
+          <p>
+            Sou um desenvolvedor Full Stack apaixonado por criar soluções
+            digitais que fazem a diferença. Com experiência em Angular e .NET,
+            busco sempre entregar código limpo e aplicações de alta qualidade.
+          </p>
+          <p>
+            Minha jornada na programação começou pela curiosidade de entender
+            como as coisas funcionam. Hoje, essa curiosidade se transformou em
+            uma carreira onde posso resolver problemas reais através da tecnologia.
+          </p>
+          <p>
+            Estou sempre em busca de novos desafios e oportunidades para
+            aprender e crescer como profissional.
+          </p>
+        </div>
+
+        <div class="about__stats">
+          @for (stat of stats; track stat.label) {
+            <div class="about__stat">
+              <span class="about__stat-value">{{ stat.value }}</span>
+              <span class="about__stat-label">{{ stat.label }}</span>
+            </div>
+          }
+        </div>
+      </div>
+    </div>
+  </section>

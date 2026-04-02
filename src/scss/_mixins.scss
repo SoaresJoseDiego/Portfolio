@@ -1,0 +1,98 @@
+
+@use 'sass:map';
+@use 'variables' as *;
+
+
+@mixin breakpoint($size) {
+  $breakpoint: map.get($breakpoints, $size);
+  @if $breakpoint {
+    @media (min-width: $breakpoint) {
+      @content;
+    }
+  }
+}
+
+
+
+@mixin font-size($size) {
+  $fs: map.get($font-sizes, $size);
+  @if $fs {
+    font-size: $fs;
+  }
+}
+
+
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+
+@mixin glass($blur: 10px, $opacity: 0.1) {
+  background: rgba(255, 255, 255, $opacity);
+  backdrop-filter: blur($blur);
+  -webkit-backdrop-filter: blur($blur);
+}
+
+@mixin text-gradient($from, $to) {
+  background: linear-gradient(135deg, $from, $to);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+@mixin card-shadow {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3),
+              0 2px 4px -2px rgba(0, 0, 0, 0.2);
+}
+
+@mixin border-gradient($from, $to, $width: 1px) {
+  border: $width solid transparent;
+  background: linear-gradient(var(--bg-secondary), var(--bg-secondary)) padding-box,
+              linear-gradient(135deg, $from, $to) border-box;
+}
+
+
+@mixin transition($property: all) {
+  transition: $property $transition;
+}
+
+@mixin transition-slow($property: all) {
+  transition: $property $transition-slow;
+}
+
+
+@mixin hover-lift {
+  transition: transform $transition, box-shadow $transition;
+
+  &:hover {
+    transform: translateY(-4px);
+    @include card-shadow;
+  }
+}
+
+
+@mixin truncate($lines: 1) {
+  @if $lines == 1 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  } @else {
+    display: -webkit-box;
+    -webkit-line-clamp: $lines;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
