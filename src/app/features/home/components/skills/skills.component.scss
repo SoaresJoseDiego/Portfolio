@@ -2,9 +2,14 @@
 @use '../../../../../scss/variables' as *;
 @use '../../../../../scss/mixins' as *;
 
+:host {
+  display: block;
+}
+
 .skills {
   padding: map.get($spacing, '20') $container-padding;
   background-color: var(--bg-secondary);
+  overflow: hidden;
 
   &__container {
     max-width: $container-max-width;
@@ -14,6 +19,9 @@
   &__title {
     text-align: center;
     margin-bottom: map.get($spacing, '12');
+    font-size: map.get($font-sizes, '3xl');
+    font-weight: map.get($font-weights, 'bold');
+    color: var(--text-primary);
 
     &::after {
       content: '';
@@ -26,106 +34,97 @@
     }
   }
 
-  &__grid {
-    display: grid;
-    gap: map.get($spacing, '6');
-
-    @include breakpoint('sm') {
-      grid-template-columns: repeat(2, 1fr);
-    }
-
-    @include breakpoint('lg') {
-      grid-template-columns: repeat(3, 1fr);
-    }
-  }
-
-  // Card estilo PrimeNG
-  &__category {
-    background-color: var(--bg-primary);
-    border-radius: $border-radius-lg;
-    border: 1px solid var(--border);
+  &__carousel {
+    position: relative;
+    width: 100%;
     overflow: hidden;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    @include transition(all);
-
-    &:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
-      border-color: var(--accent);
-    }
+    padding: map.get($spacing, '6') 0;
+    mask-image: linear-gradient(
+      to right,
+      transparent,
+      black 10%,
+      black 90%,
+      transparent
+    );
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent,
+      black 10%,
+      black 90%,
+      transparent
+    );
   }
 
-  // Header do card
-  &__category-header {
-    background: linear-gradient(135deg, var(--accent) 0%, var(--accent-hover) 100%);
-    padding: map.get($spacing, '4') map.get($spacing, '5');
-  }
-
-  &__category-title {
-    color: white;
-    font-size: map.get($font-sizes, 'lg');
-    font-weight: map.get($font-weights, 'semibold');
-    margin: 0;
+  &__track {
     display: flex;
-    align-items: center;
-    gap: map.get($spacing, '2');
-  }
-
-  // Body do card
-  &__category-body {
-    padding: map.get($spacing, '5');
-  }
-
-  &__list {
-    display: flex;
-    flex-direction: column;
-    gap: map.get($spacing, '4');
+    gap: map.get($spacing, '8');
+    width: max-content;
   }
 
   &__item {
-    padding: map.get($spacing, '3');
-    background-color: var(--bg-secondary);
-    border-radius: $border-radius;
-    @include transition(background-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: map.get($spacing, '3');
+    padding: map.get($spacing, '6');
+    background-color: var(--bg-primary);
+    border-radius: $border-radius-lg;
+    border: 1px solid var(--border);
+    min-width: 140px;
+    height: 160px;
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 
     &:hover {
-      background-color: var(--bg-tertiary);
+      transform: translateY(-4px);
+      border-color: var(--accent);
+      box-shadow: 0 12px 24px rgba(59, 130, 246, 0.2);
+
+      .skills__icon {
+        transform: scale(1.1);
+      }
+
+      .skills__name {
+        color: var(--accent);
+      }
+    }
+
+    @include breakpoint('sm') {
+      min-width: 160px;
+      height: 180px;
+      padding: map.get($spacing, '8');
+    }
+
+    @include breakpoint('md') {
+      min-width: 180px;
+      height: 200px;
     }
   }
 
-  &__item-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: map.get($spacing, '2');
+  &__icon {
+    font-size: 64px;
+    line-height: 1;
+    transition: transform 0.3s ease;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+
+    @include breakpoint('sm') {
+      font-size: 80px;
+    }
+
+    @include breakpoint('md') {
+      font-size: 96px;
+    }
   }
 
-  &__item-name {
-    font-size: map.get($font-sizes, 'sm');
-    font-weight: map.get($font-weights, 'medium');
+  &__name {
+    font-size: map.get($font-sizes, 'base');
+    font-weight: map.get($font-weights, 'semibold');
     color: var(--text-primary);
-  }
+    text-align: center;
+    transition: color 0.3s ease;
 
-  &__item-percent {
-    font-size: map.get($font-sizes, 'xs');
-    font-weight: map.get($font-weights, 'bold');
-    color: var(--accent);
-    background-color: var(--bg-tertiary);
-    padding: map.get($spacing, '1') map.get($spacing, '2');
-    border-radius: $border-radius;
-  }
-
-  &__bar {
-    height: 8px;
-    background-color: var(--bg-tertiary);
-    border-radius: 4px;
-    overflow: hidden;
-  }
-
-  &__bar-fill {
-    height: 100%;
-    background: linear-gradient(90deg, var(--accent), var(--accent-light));
-    border-radius: 4px;
-    transition: width 1s ease-out;
+    @include breakpoint('sm') {
+      font-size: map.get($font-sizes, 'lg');
+    }
   }
 }
