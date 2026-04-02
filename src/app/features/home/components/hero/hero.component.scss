@@ -193,6 +193,23 @@
         transform: translateY(-3px);
       }
     }
+
+    &--outline {
+      display: inline-flex;
+      align-items: center;
+      gap: map.get($spacing, '2');
+      background-color: transparent;
+      color: var(--accent);
+      border: 1px solid var(--accent);
+      text-decoration: none;
+
+      &:hover {
+        background-color: var(--accent);
+        color: white;
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(59, 130, 246, 0.3);
+      }
+    }
   }
 
   &__social {

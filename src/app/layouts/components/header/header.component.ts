@@ -44,7 +44,6 @@ export class HeaderComponent implements OnInit {
     if (element) {
       element.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
-    // Fecha o menu mobile após clicar
     this.isMenuOpen = false;
   }
 
