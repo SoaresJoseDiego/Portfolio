@@ -64,9 +64,9 @@ export class HeroComponent implements OnInit, OnDestroy {
   }
 
   startTypewriter(): void {
-    const typeSpeed = 100;
-    const deleteSpeed = 50;
-    const pauseTime = 2000;
+    const typeSpeed = 150;      // Velocidade de digitação (maior = mais lento)
+    const deleteSpeed = 80;     // Velocidade de apagar
+    const pauseTime = 2500;     // Pausa quando completa a palavra
 
     this.typewriterInterval = setInterval(() => {
       const currentText = this.roles[this.roleIndex];
