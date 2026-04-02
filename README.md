@@ -10,11 +10,13 @@ Portfolio pessoal desenvolvido com Angular 19, apresentando minhas habilidades, 
 |----------|-------------|--------|
 | Angular 19 | SCSS | EmailJS |
 | TypeScript | CSS Variables | Vercel |
+| ngx-translate | | |
 
 ## Features
 
 - Design responsivo (mobile-first)
 - Tema dark/light com persistência em localStorage
+- **i18n** - Suporte a Português e Inglês (troca com bandeiras 🇧🇷/🇺🇸)
 - Efeito typewriter animado
 - Scroll animations com Intersection Observer
 - Blobs animados com gradientes
@@ -60,11 +62,14 @@ src/
 │   │   ├── contact/       # Formulário de contato
 │   │   └── footer/        # Rodapé
 │   └── layouts/components/
-│       └── header/        # Navegação + theme toggle
+│       └── header/        # Navegação + theme toggle + i18n
 ├── scss/
 │   ├── _variables.scss    # Design tokens (cores, fontes)
 │   └── _mixins.scss       # Funções reutilizáveis
 └── public/
+    ├── i18n/
+    │   ├── pt.json        # Traduções em Português
+    │   └── en.json        # Traduções em Inglês
     └── Diego_Soares.pdf   # Currículo para download
 ```
 

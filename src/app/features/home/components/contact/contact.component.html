@@ -1,12 +1,12 @@
 <section class="contact" id="contact">
   <div class="contact__container">
-    <h2 class="contact__title animate-on-scroll">Contato</h2>
-    <p class="contact__subtitle animate-on-scroll">Vamos trabalhar juntos? Entre em contato!</p>
+    <h2 class="contact__title animate-on-scroll">{{ 'CONTACT.TITLE' | translate }}</h2>
+    <p class="contact__subtitle animate-on-scroll">{{ 'CONTACT.SUBTITLE' | translate }}</p>
 
     <div class="contact__content">
       <!-- Info -->
       <div class="contact__info animate-fade-left">
-        @for (info of contactInfo; track info.label) {
+        @for (info of contactInfo; track info.labelKey) {
           <div class="contact__info-item">
             @switch (info.icon) {
               @case ('email') {
@@ -23,7 +23,7 @@
               }
             }
             <div>
-              <span class="contact__info-label">{{ info.label }}</span>
+              <span class="contact__info-label">{{ info.labelKey | translate }}</span>
               <span class="contact__info-value">{{ info.value }}</span>
             </div>
           </div>
@@ -33,7 +33,7 @@
       <!-- Form -->
       <form class="contact__form animate-fade-right" (ngSubmit)="onSubmit()">
         <div class="contact__form-group">
-          <label for="name" class="contact__label">Nome</label>
+          <label for="name" class="contact__label">{{ 'CONTACT.FORM.NAME' | translate }}</label>
           <input
             type="text"
             id="name"
@@ -41,12 +41,12 @@
             [(ngModel)]="formData.name"
             name="name"
             required
-            placeholder="Seu nome"
+            [placeholder]="'CONTACT.FORM.NAME_PLACEHOLDER' | translate"
             [disabled]="isLoading">
         </div>
 
         <div class="contact__form-group">
-          <label for="email" class="contact__label">Email</label>
+          <label for="email" class="contact__label">{{ 'CONTACT.FORM.EMAIL' | translate }}</label>
           <input
             type="email"
             id="email"
@@ -54,12 +54,12 @@
             [(ngModel)]="formData.email"
             name="email"
             required
-            placeholder="seu@email.com"
+            [placeholder]="'CONTACT.FORM.EMAIL_PLACEHOLDER' | translate"
             [disabled]="isLoading">
         </div>
 
         <div class="contact__form-group">
-          <label for="message" class="contact__label">Mensagem</label>
+          <label for="message" class="contact__label">{{ 'CONTACT.FORM.MESSAGE' | translate }}</label>
           <textarea
             id="message"
             class="contact__input contact__textarea"
@@ -67,7 +67,7 @@
             name="message"
             required
             rows="5"
-            placeholder="Sua mensagem..."
+            [placeholder]="'CONTACT.FORM.MESSAGE_PLACEHOLDER' | translate"
             [disabled]="isLoading"></textarea>
         </div>
 
@@ -81,9 +81,9 @@
         <button type="submit" class="contact__btn" [disabled]="isLoading">
           @if (isLoading) {
             <span class="contact__btn-loader"></span>
-            Enviando...
+            {{ 'CONTACT.FORM.SENDING' | translate }}
           } @else {
-            Enviar Mensagem
+            {{ 'CONTACT.FORM.SUBMIT' | translate }}
           }
         </button>
       </form>

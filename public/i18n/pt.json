@@ -1,0 +1,82 @@
+{
+  "NAV": {
+    "HOME": "Início",
+    "ABOUT": "Sobre",
+    "SKILLS": "Habilidades",
+    "PROJECTS": "Projetos",
+    "CONTACT": "Contato"
+  },
+  "HERO": {
+    "GREETING": "Olá, eu sou",
+    "DESCRIPTION": "Transformando ideias em código limpo e aplicações de alta qualidade.",
+    "VIEW_PROJECTS": "Ver Projetos",
+    "CONTACT": "Contato",
+    "RESUME": "Currículo",
+    "SCROLL": "Scroll",
+    "ROLES": {
+      "FULLSTACK": "Desenvolvedor Full Stack",
+      "ANGULAR": "Angular Developer",
+      "DOTNET": ".NET Developer",
+      "PROBLEM_SOLVER": "Problem Solver"
+    }
+  },
+  "ABOUT": {
+    "TITLE": "Sobre mim",
+    "P1": "Sou um desenvolvedor Full Stack apaixonado por criar soluções digitais que fazem a diferença. Com experiência em Angular e .NET, busco sempre entregar código limpo e aplicações de alta qualidade.",
+    "P2": "Minha jornada na programação começou pela curiosidade de entender como as coisas funcionam. Hoje, essa curiosidade se transformou em uma carreira onde posso resolver problemas reais através da tecnologia.",
+    "P3": "Estou sempre em busca de novos desafios e oportunidades para aprender e crescer como profissional.",
+    "STATS": {
+      "EXPERIENCE": "Anos de Experiência",
+      "PROJECTS": "Projetos Concluídos",
+      "TECHNOLOGIES": "Tecnologias"
+    }
+  },
+  "SKILLS": {
+    "TITLE": "Habilidades",
+    "FRONTEND": "Front-end",
+    "BACKEND": "Back-end",
+    "TOOLS": "Ferramentas"
+  },
+  "PROJECTS": {
+    "TITLE": "Projetos",
+    "CODE": "Código",
+    "DEMO": "Demo",
+    "ITEMS": {
+      "MANAGEMENT": {
+        "TITLE": "Sistema de Gestão",
+        "DESCRIPTION": "Aplicação web para gerenciamento empresarial com dashboard interativo e relatórios."
+      },
+      "API": {
+        "TITLE": "API RESTful",
+        "DESCRIPTION": "API completa com autenticação JWT, CRUD e documentação Swagger."
+      },
+      "PORTFOLIO": {
+        "TITLE": "Portfólio Pessoal",
+        "DESCRIPTION": "Este portfólio desenvolvido com Angular 19 e SCSS puro, seguindo boas práticas."
+      }
+    }
+  },
+  "CONTACT": {
+    "TITLE": "Contato",
+    "SUBTITLE": "Vamos trabalhar juntos? Entre em contato!",
+    "EMAIL_LABEL": "Email",
+    "LOCATION_LABEL": "Localização",
+    "FORM": {
+      "NAME": "Nome",
+      "NAME_PLACEHOLDER": "Seu nome",
+      "EMAIL": "Email",
+      "EMAIL_PLACEHOLDER": "seu@email.com",
+      "MESSAGE": "Mensagem",
+      "MESSAGE_PLACEHOLDER": "Sua mensagem...",
+      "SUBMIT": "Enviar Mensagem",
+      "SENDING": "Enviando..."
+    },
+    "SUCCESS": "Mensagem enviada com sucesso!",
+    "ERROR": "Erro ao enviar mensagem. Tente novamente."
+  },
+  "FOOTER": {
+    "RIGHTS": "Todos os direitos reservados.",
+    "MADE_WITH": "Feito com",
+    "AND": "e"
+  }
+}

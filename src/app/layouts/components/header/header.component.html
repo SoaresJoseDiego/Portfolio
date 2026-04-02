@@ -8,9 +8,36 @@
     <nav class="header__nav">
       @for (item of navItems; track item.label) {
         <a class="header__nav-link" (click)="scrollTo(item.href)">
-          {{ item.label }}
+          {{ item.label | translate }}
         </a>
       }
+
+      <!-- Language Toggle with Flags -->
+      <button class="header__lang-btn" (click)="toggleLanguage()" aria-label="Mudar idioma">
+        @if (currentLang === 'pt') {
+          <!-- USA Flag -->
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 640 480">
+            <g fill-rule="evenodd">
+              <g stroke-width="1pt">
+                <path fill="#bd3d44" d="M0 0h912v37H0zm0 73.9h912v37H0zm0 73.8h912v37H0zm0 73.8h912v37H0zm0 74h912v36.8H0zm0 73.7h912v37H0z" transform="scale(.9375 1)"/>
+                <path fill="#fff" d="M0 37h912v36.9H0zm0 73.8h912v36.9H0zm0 73.8h912v37H0zm0 73.9h912v37H0zm0 73.8h912v37H0zm0 73.8h912v37H0z" transform="scale(.9375 1)"/>
+              </g>
+              <path fill="#192f5d" d="M0 0h364.8v258.5H0z"/>
+              <path fill="#fff" d="m30.4 11 3.4 10.3h10.6l-8.6 6.3 3.3 10.3-8.7-6.4-8.6 6.3L25 27.6l-8.7-6.3h10.9zm60.8 0 3.3 10.3h10.8l-8.7 6.3 3.2 10.3-8.6-6.4-8.7 6.3 3.3-10.2-8.6-6.3h10.6zm60.8 0 3.3 10.3H166l-8.6 6.3 3.3 10.3-8.7-6.4-8.7 6.3 3.3-10.2-8.6-6.3h10.6zm60.8 0 3.3 10.3h10.8l-8.7 6.3 3.3 10.3-8.7-6.4-8.6 6.3 3.2-10.2-8.6-6.3H179zm60.8 0 3.3 10.3h10.7l-8.6 6.3 3.3 10.3-8.7-6.4-8.7 6.3 3.3-10.2-8.7-6.3h10.8zm60.8 0 3.3 10.3h10.8l-8.7 6.3 3.3 10.3-8.7-6.4-8.6 6.3 3.2-10.2-8.6-6.3h10.6z" transform="scale(.9375 1)"/>
+            </g>
+          </svg>
+        } @else {
+          <!-- Brazil Flag -->
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 640 480">
+            <g stroke-width="1pt">
+              <path fill="#229e45" d="M0 0h640v480H0z"/>
+              <path fill="#f8e509" d="m321.4 436 301.5-195.7L319.6 44 17.1 240.7z"/>
+              <path fill="#2b49a3" d="M452.8 240c0 70.3-57.1 127.3-127.6 127.3A127.4 127.4 0 1 1 452.8 240z"/>
+              <path fill="#ffffef" d="M283.3 316.3l-4-2.3-4 2 .9-4.5-3.2-3.4 4.5-.5 2.1-4.2 1.9 4.3 4.5.6-3.3 3.3zm-21.5-26.8l-4-2.3-4 2 .9-4.5-3.2-3.4 4.5-.5 2.1-4.2 1.9 4.3 4.5.6-3.3 3.3z"/>
+            </g>
+          </svg>
+        }
+      </button>
 
       <!-- Theme Toggle Desktop -->
       <button class="header__theme-btn" (click)="toggleTheme()" [attr.aria-label]="isDarkMode ? 'Ativar modo claro' : 'Ativar modo escuro'">
@@ -36,6 +63,33 @@
 
     <!-- Mobile Actions -->
     <div class="header__mobile-actions">
+      <!-- Language Toggle Mobile with Flags -->
+      <button class="header__lang-btn" (click)="toggleLanguage()" aria-label="Mudar idioma">
+        @if (currentLang === 'pt') {
+          <!-- USA Flag -->
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 640 480">
+            <g fill-rule="evenodd">
+              <g stroke-width="1pt">
+                <path fill="#bd3d44" d="M0 0h912v37H0zm0 73.9h912v37H0zm0 73.8h912v37H0zm0 73.8h912v37H0zm0 74h912v36.8H0zm0 73.7h912v37H0z" transform="scale(.9375 1)"/>
+                <path fill="#fff" d="M0 37h912v36.9H0zm0 73.8h912v36.9H0zm0 73.8h912v37H0zm0 73.9h912v37H0zm0 73.8h912v37H0zm0 73.8h912v37H0z" transform="scale(.9375 1)"/>
+              </g>
+              <path fill="#192f5d" d="M0 0h364.8v258.5H0z"/>
+              <path fill="#fff" d="m30.4 11 3.4 10.3h10.6l-8.6 6.3 3.3 10.3-8.7-6.4-8.6 6.3L25 27.6l-8.7-6.3h10.9zm60.8 0 3.3 10.3h10.8l-8.7 6.3 3.2 10.3-8.6-6.4-8.7 6.3 3.3-10.2-8.6-6.3h10.6zm60.8 0 3.3 10.3H166l-8.6 6.3 3.3 10.3-8.7-6.4-8.7 6.3 3.3-10.2-8.6-6.3h10.6zm60.8 0 3.3 10.3h10.8l-8.7 6.3 3.3 10.3-8.7-6.4-8.6 6.3 3.2-10.2-8.6-6.3H179zm60.8 0 3.3 10.3h10.7l-8.6 6.3 3.3 10.3-8.7-6.4-8.7 6.3 3.3-10.2-8.7-6.3h10.8zm60.8 0 3.3 10.3h10.8l-8.7 6.3 3.3 10.3-8.7-6.4-8.6 6.3 3.2-10.2-8.6-6.3h10.6z" transform="scale(.9375 1)"/>
+            </g>
+          </svg>
+        } @else {
+          <!-- Brazil Flag -->
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 640 480">
+            <g stroke-width="1pt">
+              <path fill="#229e45" d="M0 0h640v480H0z"/>
+              <path fill="#f8e509" d="m321.4 436 301.5-195.7L319.6 44 17.1 240.7z"/>
+              <path fill="#2b49a3" d="M452.8 240c0 70.3-57.1 127.3-127.6 127.3A127.4 127.4 0 1 1 452.8 240z"/>
+              <path fill="#ffffef" d="M283.3 316.3l-4-2.3-4 2 .9-4.5-3.2-3.4 4.5-.5 2.1-4.2 1.9 4.3 4.5.6-3.3 3.3zm-21.5-26.8l-4-2.3-4 2 .9-4.5-3.2-3.4 4.5-.5 2.1-4.2 1.9 4.3 4.5.6-3.3 3.3z"/>
+            </g>
+          </svg>
+        }
+      </button>
+
       <button class="header__theme-btn" (click)="toggleTheme()" [attr.aria-label]="isDarkMode ? 'Ativar modo claro' : 'Ativar modo escuro'">
         @if (isDarkMode) {
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -66,7 +120,7 @@
   <nav class="header__mobile-nav" [class.active]="isMenuOpen">
     @for (item of navItems; track item.label) {
       <a class="header__mobile-link" (click)="scrollTo(item.href)">
-        {{ item.label }}
+        {{ item.label | translate }}
       </a>
     }
   </nav>

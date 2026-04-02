@@ -1,16 +1,18 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-skills',
-  imports: [CommonModule],
+  imports: [CommonModule, TranslateModule],
   templateUrl: './skills.component.html',
   styleUrl: './skills.component.scss',
 })
 export class SkillsComponent {
   skillCategories = [
     {
-      title: 'Front-end',
+      titleKey: 'SKILLS.FRONTEND',
+      icon: 'frontend',
       skills: [
         { name: 'Angular', level: 80 },
         { name: 'TypeScript', level: 75 },
@@ -19,7 +21,8 @@ export class SkillsComponent {
       ],
     },
     {
-      title: 'Back-end',
+      titleKey: 'SKILLS.BACKEND',
+      icon: 'backend',
       skills: [
         { name: 'C#', level: 75 },
         { name: '.NET', level: 70 },
@@ -28,7 +31,8 @@ export class SkillsComponent {
       ],
     },
     {
-      title: 'Ferramentas',
+      titleKey: 'SKILLS.TOOLS',
+      icon: 'tools',
       skills: [
         { name: 'Git', level: 80 },
         { name: 'Azure DevOps', level: 60 },

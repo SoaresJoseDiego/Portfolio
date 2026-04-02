@@ -1,38 +1,66 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-hero',
-  imports: [CommonModule],
+  imports: [CommonModule, TranslateModule],
   templateUrl: './hero.component.html',
   styleUrl: './hero.component.scss',
 })
 export class HeroComponent implements OnInit, OnDestroy {
   name = 'Diego Soares';
-  description = 'Transformando ideias em soluções digitais com Angular e .NET';
 
   // Typewriter
-  roles = ['Desenvolvedor Full Stack', 'Angular Developer', '.NET Developer', 'Problem Solver'];
+  roleKeys = ['HERO.ROLES.FULLSTACK', 'HERO.ROLES.ANGULAR', 'HERO.ROLES.DOTNET', 'HERO.ROLES.PROBLEM_SOLVER'];
+  roles: string[] = [];
   currentRole = '';
   roleIndex = 0;
   charIndex = 0;
   isDeleting = false;
   typewriterInterval: any;
+  langSubscription!: Subscription;
 
   socialLinks = [
     { name: 'GitHub', url: 'https://github.com/SoaresJoseDiego', icon: 'github' },
     { name: 'LinkedIn', url: 'https://www.linkedin.com/in/diegoj-soares', icon: 'linkedin' }
   ];
 
+  constructor(private translate: TranslateService) {}
+
   ngOnInit(): void {
-    this.startTypewriter();
+    this.loadRoles();
     this.initScrollAnimations();
+
+    // Recarrega roles quando muda o idioma
+    this.langSubscription = this.translate.onLangChange.subscribe(() => {
+      this.loadRoles();
+    });
   }
 
   ngOnDestroy(): void {
     if (this.typewriterInterval) {
       clearInterval(this.typewriterInterval);
     }
+    if (this.langSubscription) {
+      this.langSubscription.unsubscribe();
+    }
+  }
+
+  loadRoles(): void {
+    if (this.typewriterInterval) {
+      clearInterval(this.typewriterInterval);
+    }
+
+    this.translate.get(this.roleKeys).subscribe(translations => {
+      this.roles = this.roleKeys.map(key => translations[key]);
+      this.roleIndex = 0;
+      this.charIndex = 0;
+      this.isDeleting = false;
+      this.currentRole = '';
+      this.startTypewriter();
+    });
   }
 
   startTypewriter(): void {
@@ -44,19 +72,16 @@ export class HeroComponent implements OnInit, OnDestroy {
       const currentText = this.roles[this.roleIndex];
 
       if (!this.isDeleting) {
-        // Digitando
         this.currentRole = currentText.substring(0, this.charIndex + 1);
         this.charIndex++;
 
         if (this.charIndex === currentText.length) {
           this.isDeleting = true;
-          // Pausa antes de deletar
           clearInterval(this.typewriterInterval);
           setTimeout(() => this.startTypewriter(), pauseTime);
           return;
         }
       } else {
-        // Deletando
         this.currentRole = currentText.substring(0, this.charIndex - 1);
         this.charIndex--;
 
@@ -82,7 +107,6 @@ export class HeroComponent implements OnInit, OnDestroy {
       });
     }, observerOptions);
 
-    // Observar elementos com classe .animate-on-scroll
     setTimeout(() => {
       document.querySelectorAll('.animate-on-scroll').forEach(el => {
         observer.observe(el);

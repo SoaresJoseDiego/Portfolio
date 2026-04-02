@@ -1,0 +1,82 @@
+{
+  "NAV": {
+    "HOME": "Home",
+    "ABOUT": "About",
+    "SKILLS": "Skills",
+    "PROJECTS": "Projects",
+    "CONTACT": "Contact"
+  },
+  "HERO": {
+    "GREETING": "Hi, I'm",
+    "DESCRIPTION": "Turning ideas into clean code and high-quality applications.",
+    "VIEW_PROJECTS": "View Projects",
+    "CONTACT": "Contact",
+    "RESUME": "Resume",
+    "SCROLL": "Scroll",
+    "ROLES": {
+      "FULLSTACK": "Full Stack Developer",
+      "ANGULAR": "Angular Developer",
+      "DOTNET": ".NET Developer",
+      "PROBLEM_SOLVER": "Problem Solver"
+    }
+  },
+  "ABOUT": {
+    "TITLE": "About me",
+    "P1": "I'm a Full Stack developer passionate about creating digital solutions that make a difference. With experience in Angular and .NET, I always strive to deliver clean code and high-quality applications.",
+    "P2": "My programming journey started with the curiosity to understand how things work. Today, that curiosity has become a career where I can solve real problems through technology.",
+    "P3": "I'm always looking for new challenges and opportunities to learn and grow as a professional.",
+    "STATS": {
+      "EXPERIENCE": "Years of Experience",
+      "PROJECTS": "Completed Projects",
+      "TECHNOLOGIES": "Technologies"
+    }
+  },
+  "SKILLS": {
+    "TITLE": "Skills",
+    "FRONTEND": "Front-end",
+    "BACKEND": "Back-end",
+    "TOOLS": "Tools"
+  },
+  "PROJECTS": {
+    "TITLE": "Projects",
+    "CODE": "Code",
+    "DEMO": "Demo",
+    "ITEMS": {
+      "MANAGEMENT": {
+        "TITLE": "Management System",
+        "DESCRIPTION": "Web application for business management with interactive dashboard and reports."
+      },
+      "API": {
+        "TITLE": "RESTful API",
+        "DESCRIPTION": "Complete API with JWT authentication, CRUD operations and Swagger documentation."
+      },
+      "PORTFOLIO": {
+        "TITLE": "Personal Portfolio",
+        "DESCRIPTION": "This portfolio developed with Angular 19 and pure SCSS, following best practices."
+      }
+    }
+  },
+  "CONTACT": {
+    "TITLE": "Contact",
+    "SUBTITLE": "Let's work together? Get in touch!",
+    "EMAIL_LABEL": "Email",
+    "LOCATION_LABEL": "Location",
+    "FORM": {
+      "NAME": "Name",
+      "NAME_PLACEHOLDER": "Your name",
+      "EMAIL": "Email",
+      "EMAIL_PLACEHOLDER": "your@email.com",
+      "MESSAGE": "Message",
+      "MESSAGE_PLACEHOLDER": "Your message...",
+      "SUBMIT": "Send Message",
+      "SENDING": "Sending..."
+    },
+    "SUCCESS": "Message sent successfully!",
+    "ERROR": "Error sending message. Please try again."
+  },
+  "FOOTER": {
+    "RIGHTS": "All rights reserved.",
+    "MADE_WITH": "Made with",
+    "AND": "and"
+  }
+}
