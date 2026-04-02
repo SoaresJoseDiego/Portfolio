@@ -2,31 +2,49 @@
 // DESIGN TOKENS - Diego Soares Portfolio
 // ============================================
 
-// --- CORES (CSS Custom Properties) ---
-:root {
-  // Background (tons escuros)
-  --bg-primary: #0a0a0f;
-  --bg-secondary: #12121a;
-  --bg-tertiary: #1a1a24;
+// Dark Mode (padrão)
+:root,
+[data-theme="dark"] {
+  --bg-primary: #0f0f13;
+  --bg-secondary: #16161d;
+  --bg-tertiary: #1e1e27;
 
-  // Texto
   --text-primary: #f4f4f5;
   --text-secondary: #a1a1aa;
-  --text-muted: #52525b;
+  --text-muted: #71717a;
 
-  // Cor de destaque (Azul elétrico)
   --accent: #3B82F6;
   --accent-hover: #2563EB;
   --accent-light: #60A5FA;
 
-  // Feedback
   --success: #10B981;
   --warning: #F59E0B;
   --error: #EF4444;
 
-  // Bordas e divisores
   --border: #27272a;
   --border-hover: #3f3f46;
+}
+
+// Light Mode (tons mais suaves)
+[data-theme="light"] {
+  --bg-primary: #fafafa;
+  --bg-secondary: #f0f0f3;
+  --bg-tertiary: #e4e4e7;
+
+  --text-primary: #1a1a1e;
+  --text-secondary: #4a4a52;
+  --text-muted: #71717a;
+
+  --accent: #2563EB;
+  --accent-hover: #1d4ed8;
+  --accent-light: #3B82F6;
+
+  --success: #059669;
+  --warning: #d97706;
+  --error: #dc2626;
+
+  --border: #d4d4d8;
+  --border-hover: #a1a1aa;
 }
 
 // --- TIPOGRAFIA ---

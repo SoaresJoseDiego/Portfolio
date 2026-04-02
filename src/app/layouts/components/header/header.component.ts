@@ -18,9 +18,33 @@ export class HeaderComponent {
 
   isMenuOpen = false;
 
-  toggleMenu(): void {
-    this.isMenuOpen = !this.isMenuOpen;
-  }
+
+
+   isDarkMode = true;
+
+    ngOnInit(): void {
+      const saved = localStorage.getItem('theme');
+      if (saved) {
+        this.isDarkMode = saved === 'dark';
+      } else {
+        this.isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      }
+      this.applyTheme();
+    }
+
+    toggleMenu(): void {
+      this.isMenuOpen = !this.isMenuOpen;
+    }
+
+    toggleTheme(): void {
+      this.isDarkMode = !this.isDarkMode;
+      this.applyTheme();
+      localStorage.setItem('theme', this.isDarkMode ? 'dark' : 'light');
+    }
+
+    private applyTheme(): void {
+      document.documentElement.setAttribute('data-theme', this.isDarkMode ? 'dark' : 'light');
+    }
 
   
 }
